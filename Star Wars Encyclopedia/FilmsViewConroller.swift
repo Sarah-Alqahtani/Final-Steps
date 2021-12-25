@@ -9,36 +9,33 @@ import UIKit
 
 class FilmsViewConroller: UITableViewController {
     var Film:[String] = []
+    
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
-        let url = URL(string: "https://swapi.dev/api/films/?format=json")
-               
-               URLSession.shared.dataTask(with: url!, completionHandler: {
-                   data, response, error in
-                   do{
-                       let response = try JSONDecoder().decode(decodeFilms.self, from: data!)
-                       for film in response.results{
-                           
-                        self.Film.append(film.title)
-                      
-                       }
-                       
-                       DispatchQueue.main.async {
-                           self.tableView.reloadData()
-                       }
-                   }catch{
-                       print(error)
-        
-                   }
-            
-               
-               })
-            .resume()
+            super.viewDidLoad()
+        StarWarsModelFilm.getAllFilms(completionHandler: {
+            // passing what becomes "completionHandler" in the 'getAllPeople' function definition in StarWarsModel.swift
+                data, response, error in
+                    do {
+                        // Try converting the JSON object to "Foundation Types" (NSDictionary, NSArray, NSString, etc.)
+                        if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary {
+                            if let results = jsonResult["results"] as? NSArray {
+                                for person in results {
+                                    let personDict = person as! NSDictionary
+                                    self.Film.append(personDict["title"]! as! String)
+                                }
+                            }
+                        }
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                        }
+                    } catch {
+                        print("Something went wrong")
                     }
+            })
+        }
+          
                 
-                
-    
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

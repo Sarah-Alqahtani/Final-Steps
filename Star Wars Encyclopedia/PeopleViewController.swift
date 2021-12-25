@@ -4,40 +4,32 @@ import UIKit
 class PeopleViewController: UITableViewController {
     // Hardcoded data for now
     var people:[String] = []
-    override func viewDidLoad() {
-        super.viewDidLoad()
-             let url = URL(string: "https://swapi.dev/api/people/?format=json")
-             let session = URLSession.shared
-             let task = session.dataTask(with: url!, completionHandler: {
-                 // see: Swift closure expression syntax
-                 data, response, error in
-
-                 do {
-                    
-                     if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary {
-                         if let result=jsonResult["results"] as? NSArray{
-                             for object in result{
-                                 if let jsonObject=object as? NSDictionary{
-                                     self.people.append(jsonObject["name"] as! String)
-                                 }
-                             }
-                         }
-                         
-                     }
-                     DispatchQueue.main.async {
-                         self.tableView.reloadData()
-                     }
-                     
-                 } catch {
-                     print(error)
-                 }
-             })
-            
-             task.resume()
-                    }
-                
-                
     
+    override func viewDidLoad() {
+            super.viewDidLoad()
+            StarWarsModel.getAllPeople(completionHandler: { // passing what becomes "completionHandler" in the 'getAllPeople' function definition in StarWarsModel.swift
+                data, response, error in
+                    do {
+                        // Try converting the JSON object to "Foundation Types" (NSDictionary, NSArray, NSString, etc.)
+                        if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary {
+                            if let results = jsonResult["results"] as? NSArray {
+                                for person in results {
+                                    let personDict = person as! NSDictionary
+                                    self.people.append(personDict["name"]! as! String)
+                                }
+                            }
+                        }
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                            
+                        }
+                    } catch {
+                        print("Something went wrong")
+                    }
+            })
+        }
+                
+                
     
 
     override func didReceiveMemoryWarning() {
