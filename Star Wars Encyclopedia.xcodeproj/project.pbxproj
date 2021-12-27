@@ -17,6 +17,8 @@
 		84E69CB827777A7E00E4807E /* FilmsViewConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E69CB727777A7E00E4807E /* FilmsViewConroller.swift */; };
 		84E69CBE2777B1C200E4807E /* StarWarsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E69CBD2777B1C200E4807E /* StarWarsModel.swift */; };
 		84E69CC02777B54B00E4807E /* StarWarsModelFilm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E69CBF2777B54B00E4807E /* StarWarsModelFilm.swift */; };
+		84E69CC92779271400E4807E /* FilmsDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E69CC82779271400E4807E /* FilmsDetails.swift */; };
+		84E69CCB2779273500E4807E /* PeopleDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E69CCA2779273500E4807E /* PeopleDetails.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		84E69CB727777A7E00E4807E /* FilmsViewConroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmsViewConroller.swift; sourceTree = "<group>"; };
 		84E69CBD2777B1C200E4807E /* StarWarsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsModel.swift; sourceTree = "<group>"; };
 		84E69CBF2777B54B00E4807E /* StarWarsModelFilm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsModelFilm.swift; sourceTree = "<group>"; };
+		84E69CC82779271400E4807E /* FilmsDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmsDetails.swift; sourceTree = "<group>"; };
+		84E69CCA2779273500E4807E /* PeopleDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleDetails.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,19 +68,45 @@
 		84E69C9D2777622800E4807E /* Star Wars Encyclopedia */ = {
 			isa = PBXGroup;
 			children = (
-				84E69C9E2777622800E4807E /* AppDelegate.swift */,
-				84E69CA02777622800E4807E /* SceneDelegate.swift */,
-				84E69CB52777629E00E4807E /* PeopleViewController.swift */,
-				84E69CB727777A7E00E4807E /* FilmsViewConroller.swift */,
+				84E69CC72779255E00E4807E /* Delegate */,
+				84E69CC62779254E00E4807E /* Films */,
+				84E69CC52779254100E4807E /* People */,
 				84E69CA42777622800E4807E /* Main.storyboard */,
 				84E69CAA2777622900E4807E /* Assets.xcassets */,
 				84E69CAC2777622900E4807E /* LaunchScreen.storyboard */,
 				84E69CAF2777622900E4807E /* Info.plist */,
 				84E69CA72777622800E4807E /* Star_Wars_Encyclopedia.xcdatamodeld */,
-				84E69CBD2777B1C200E4807E /* StarWarsModel.swift */,
-				84E69CBF2777B54B00E4807E /* StarWarsModelFilm.swift */,
 			);
 			path = "Star Wars Encyclopedia";
+			sourceTree = "<group>";
+		};
+		84E69CC52779254100E4807E /* People */ = {
+			isa = PBXGroup;
+			children = (
+				84E69CB52777629E00E4807E /* PeopleViewController.swift */,
+				84E69CBD2777B1C200E4807E /* StarWarsModel.swift */,
+				84E69CCA2779273500E4807E /* PeopleDetails.swift */,
+			);
+			path = People;
+			sourceTree = "<group>";
+		};
+		84E69CC62779254E00E4807E /* Films */ = {
+			isa = PBXGroup;
+			children = (
+				84E69CB727777A7E00E4807E /* FilmsViewConroller.swift */,
+				84E69CBF2777B54B00E4807E /* StarWarsModelFilm.swift */,
+				84E69CC82779271400E4807E /* FilmsDetails.swift */,
+			);
+			path = Films;
+			sourceTree = "<group>";
+		};
+		84E69CC72779255E00E4807E /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				84E69C9E2777622800E4807E /* AppDelegate.swift */,
+				84E69CA02777622800E4807E /* SceneDelegate.swift */,
+			);
+			path = Delegate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,11 +181,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				84E69CA92777622800E4807E /* Star_Wars_Encyclopedia.xcdatamodeld in Sources */,
+				84E69CCB2779273500E4807E /* PeopleDetails.swift in Sources */,
 				84E69CB62777629E00E4807E /* PeopleViewController.swift in Sources */,
 				84E69CC02777B54B00E4807E /* StarWarsModelFilm.swift in Sources */,
 				84E69CB827777A7E00E4807E /* FilmsViewConroller.swift in Sources */,
 				84E69C9F2777622800E4807E /* AppDelegate.swift in Sources */,
 				84E69CBE2777B1C200E4807E /* StarWarsModel.swift in Sources */,
+				84E69CC92779271400E4807E /* FilmsDetails.swift in Sources */,
 				84E69CA12777622800E4807E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
